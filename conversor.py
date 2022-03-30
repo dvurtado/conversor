@@ -1,55 +1,37 @@
-menu = """
+from threading import local
 
-Welcome to the Platzi Money Converter. 🤑
 
-To continue, please choose among these options:
+def conversor (moneda_local, tipo_cambio):
 
-1. To transform Euros to US dollar
-2. To transform Ecuadorian Sucre to US dollar
-3. To transform Argentinian Peso to US dollar
-
-"""
-option = input(menu)
-
-if option == "1":
-
-    # Conversor de euros a dólares
-
-    euros = input("¿Cuántos euros tienes? ")
-    euros = float(euros)
-    valor_dolar = 0.90424831
-    dolares = euros * valor_dolar
+    local = input("Ingrese la cantidad de" + moneda_local + "que dispone")
+    local = float(local)
+    dolares = local / tipo_cambio
     dolares = round (dolares, 2)
     dolares = str(dolares)
-    print ("Tienes $"  + dolares + " dólares")
+    print("Usted tiene " + dolares + "en su cuenta bancaria :")
 
-elif option == "2":
+menu = """
+Bienvenido al menu de opciones del conversor internacional de monedas:
 
-    # conversor de sucres a dólares
+1. De pesos argentinos a dólares.
+2. De sucres a dólares
+3. De pesos colombianos a dólares
 
-    sucre = int (input ("¿Cuántos sucres tienes? "))
-    valor_dolar = 25000
-    dolar = sucre / valor_dolar
-    dolar = round (dolar, 2)
-    dolar = str(dolar)
-    print ("Tienes $" + dolar + "dólares")
+"""
 
+opcion = int(input (menu) )
 
-elif option == "3":
+if opcion == 1:
+    conversor ("pesos argentinos", 109)
 
-    # conversor de pesos a dólares
+elif opcion ==2:
+    conversor ("pesos colombianos", 3750)
 
-    pesos = int (input ("¿Cuántos pesos argentinxs tienes? " ))
-    valor_dolar = 109.98
-    dolar3 = pesos / valor_dolar
-    dolar3 = round (dolar3, 2)
-    dolar3 = str(dolar3)
-    print ("Tienes $" + dolar3 + "dólares")
+elif opcion == 3:
+    conversor ("sucres ecuatorianos", 25000)
 
-else: 
+else:
+    print("Escoja una opción viable")
 
-    print ("Debe elegir una opción entre 1, 2 y 3")
-
-    
 
 
